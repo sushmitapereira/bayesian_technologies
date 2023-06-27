@@ -1,7 +1,9 @@
 import 'package:bayesian_technologies/bottom_navigation.dart';
 import 'package:bayesian_technologies/screens/card/addcard.dart';
+import 'package:bayesian_technologies/screens/card/server.dart';
 import 'package:flutter/material.dart';
 import 'screens/card/addcard.dart';
+import 'package:bayesian_technologies/screens/card/server.dart';
 
 void main() async{
  
