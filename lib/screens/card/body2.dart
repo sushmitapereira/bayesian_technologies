@@ -14,21 +14,22 @@ class Body2 extends StatelessWidget {
   Widget build(BuildContext context) {
     
 
-    Future opendialog() => showDialog(
-          context: context,
-          builder: (context) => AlertDialog(
-            title: Text('Type Below'),
-            content: TextField(
-              decoration: InputDecoration(hintText: 'Comment'),
-            ),
-            actions: [
-              TextButton(
-                onPressed: () {},
-                child: Text('Add'),
-              )
-            ],
-          ),
-        );
+    // Future opendialog() => showDialog(
+    //       context: context,
+    //       builder: (context) => AlertDialog(
+    //         title: Text('Type Below'),
+    //         content: TextField(
+    //           decoration: InputDecoration(hintText: 'Comment'),
+    //         ),
+    //         actions: [
+    //           TextButton(
+    //             onPressed: () {},
+    //             child: Text('Add'),
+    //           )
+    //         ],
+    //       ),
+    //     );
+     
     final TextEditingController _searchController = TextEditingController();
     final TextEditingController _servercontroller = TextEditingController();
     return Column(children: <Widget>[
@@ -75,6 +76,17 @@ class Body2 extends StatelessWidget {
         height: 20,
       ),
     CommentsScreen(),
+    SizedBox(height: 20),
+    
+     ListView.builder(
+                  itemCount: _comments.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return ListTile(
+                      title: Text(_comments[index]),
+                    );
+                  },
+                ),
+
     ]);
   }
 }

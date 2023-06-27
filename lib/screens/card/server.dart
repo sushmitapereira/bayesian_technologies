@@ -42,41 +42,77 @@ class _CommentsScreenState extends State<CommentsScreen> {
     fetchComments();
   }
 
+  TextEditingController _commentController = TextEditingController();
+   List<String> _comments = [];
+
+  void _addComment() {
+    setState(() {
+      String newComment = _commentController.text;
+      _comments.add(newComment);
+      _commentController.clear();
+    });
+  }
+
+  Future opendialog() => showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text('Type Below'),
+          content: TextField(
+            controller: _commentController,
+            decoration: InputDecoration(hintText: 'Comment'),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                _addComment();
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('New comment was added!'),
+                  ),
+                );
+                Navigator.pop(context);
+              },
+              child: Text('Add'),
+            )
+          ],
+        ),
+      );
+
   @override
   Widget build(BuildContext context) {
     //return Scaffold(
     // appBar: AppBar(
     //   title: Text('First Comment'),
     // ),
-    return Container( 
-     
-      child:Padding(
-      padding: EdgeInsets.all(20.0),
-      
-      child: Row(
-        children: [
-          
-          if (firstComment != null) ...[
-            CircleAvatar(
-              backgroundImage: NetworkImage(firstComment!.thumbnailUrl),
-              radius: 20,
-            ),
-            SizedBox(width: 10,),
-            Text(
-              firstComment!.title,
-              style: TextStyle(fontSize: 18),
-            ),
-            SizedBox(width: 10),
-            IconButton(onPressed: (){
-             
-            }, 
-            icon: Icon(Icons.add))
-
+    
+    return Container(
+      child: Padding(
+        padding: EdgeInsets.all(20.0),
+        child: Row(
+          children: [
+            if (firstComment != null) ...[
+              CircleAvatar(
+                backgroundImage: NetworkImage(firstComment!.thumbnailUrl),
+                radius: 20,
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Text(
+                firstComment!.title,
+                style: TextStyle(fontSize: 18),
+              ),
+              SizedBox(width: 10),
+              IconButton(
+                  onPressed: () {
+                    opendialog();
+                  },
+                  icon: Icon(Icons.add)),
+            ],
           ],
-        ],
+        ),
       ),
-    )
     );
-   
   }
 }
+
