@@ -1,19 +1,13 @@
-import 'dart:convert';
+import 'dart:ui';
+
 import 'package:bayesian_technologies/screens/card/server.dart';
+
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
-import 'package:bayesian_technologies/screens/card/server.dart';
-import 'package:http/http.dart';
-import 'package:bayesian_technologies/constants.dart';
-import 'package:flutter/material.dart';
+
+
 
 class Body2 extends StatelessWidget {
-  
-  @override
   Widget build(BuildContext context) {
-    
-
     // Future opendialog() => showDialog(
     //       context: context,
     //       builder: (context) => AlertDialog(
@@ -29,7 +23,7 @@ class Body2 extends StatelessWidget {
     //         ],
     //       ),
     //     );
-     
+
     final TextEditingController _searchController = TextEditingController();
     final TextEditingController _servercontroller = TextEditingController();
     return Column(children: <Widget>[
@@ -53,7 +47,8 @@ class Body2 extends StatelessWidget {
         child: TextField(
           controller: _searchController,
           decoration: InputDecoration(
-            hintText: 'Search...',
+           hintText: 'Search...',
+       
             // Add a clear button to the search bar
             suffixIcon: IconButton(
               icon: Icon(Icons.clear),
@@ -75,18 +70,12 @@ class Body2 extends StatelessWidget {
       SizedBox(
         height: 20,
       ),
-    CommentsScreen(),
-    SizedBox(height: 20),
-    
-     ListView.builder(
-                  itemCount: _comments.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return ListTile(
-                      title: Text(_comments[index]),
-                    );
-                  },
-                ),
+      CommentsScreen(),
+      SizedBox(height: 20),
+      
+      Text(commentValue),
 
+      
     ]);
   }
 }

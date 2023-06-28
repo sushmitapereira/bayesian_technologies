@@ -1,6 +1,8 @@
+import 'package:bayesian_technologies/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:bayesian_technologies/screens/card/body2.dart';
 
 class Comment {
   final String title;
@@ -8,6 +10,8 @@ class Comment {
 
   Comment({required this.title, required this.thumbnailUrl});
 }
+
+String commentValue = '';
 
 class CommentsScreen extends StatefulWidget {
   @override
@@ -42,16 +46,18 @@ class _CommentsScreenState extends State<CommentsScreen> {
     fetchComments();
   }
 
-  TextEditingController _commentController = TextEditingController();
-   List<String> _comments = [];
+  // String commentValue = '';
 
-  void _addComment() {
-    setState(() {
-      String newComment = _commentController.text;
-      _comments.add(newComment);
-      _commentController.clear();
-    });
-  }
+  TextEditingController _commentController = TextEditingController();
+  // List<String> _comments = [];
+
+  // void _addComment() {
+  //   setState(() {
+  //     String newComment = _commentController.text;
+  //     _comments.add(newComment);
+  //     _commentController.clear();
+  //   });
+  // }
 
   Future opendialog() => showDialog(
         context: context,
@@ -60,17 +66,22 @@ class _CommentsScreenState extends State<CommentsScreen> {
           content: TextField(
             controller: _commentController,
             decoration: InputDecoration(hintText: 'Comment'),
+            onChanged: (value) {
+              commentValue = value;
+            },
           ),
           actions: [
             TextButton(
               onPressed: () {
-                _addComment();
+                //    _addComment();
+                
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text('New comment was added!'),
                   ),
                 );
                 Navigator.pop(context);
+                
               },
               child: Text('Add'),
             )
@@ -84,7 +95,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
     // appBar: AppBar(
     //   title: Text('First Comment'),
     // ),
-    
+
     return Container(
       child: Padding(
         padding: EdgeInsets.all(20.0),
@@ -115,4 +126,3 @@ class _CommentsScreenState extends State<CommentsScreen> {
     );
   }
 }
-
