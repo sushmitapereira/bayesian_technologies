@@ -13,15 +13,16 @@ class MyBottomNavBar extends StatelessWidget {
     return Container(
       height: 80,
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [
-           iconcolor,
-            Colors.white,
-          ],
-          
-        ),
+         
+     boxShadow: [
+      BoxShadow(
+        color: Colors.grey.withOpacity(0.1),
+        spreadRadius: 2,
+        blurRadius: 5,
+        offset: Offset(0, 2),
+      ),
+    ],
+        
         borderRadius: BorderRadius.only(
             topRight: Radius.circular(30), topLeft: Radius.circular(30)),
       ),
@@ -29,14 +30,16 @@ class MyBottomNavBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           IconButton(
-            icon: Icon(MyFlutterApp.home),
+             iconSize: 50,
+          icon: Image.asset('assets/images/home.PNG'),
             onPressed: () {
 
             },
           ),
           IconButton(
             color: iconcolor,
-            icon: Icon(MyFlutterApp.credit_card),
+            iconSize: 50,
+            icon: Image.asset('assets/images/card.PNG'),
             onPressed: () {
                 Navigator.push(
                 context,
@@ -47,11 +50,13 @@ class MyBottomNavBar extends StatelessWidget {
             },
           ),
           IconButton(
-            icon: Icon(MyFlutterApp.newspaper),
+             iconSize: 50,
+            icon: Image.asset('assets/images/pc.PNG'),
             onPressed: () {},
           ),
           IconButton(
-            icon: Icon(MyFlutterApp.user),
+             iconSize: 50,
+           icon: Image.asset('assets/images/profile image.PNG'),
             onPressed: () {},
           )
         ],

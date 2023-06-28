@@ -60,6 +60,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
   // }
 
   Future opendialog() => showDialog(
+  
         context: context,
         builder: (context) => AlertDialog(
           title: Text('Type Below'),
@@ -72,6 +73,11 @@ class _CommentsScreenState extends State<CommentsScreen> {
           ),
           actions: [
             TextButton(
+              style: TextButton.styleFrom(
+          backgroundColor: iconcolor,
+          
+    // You can customize other properties like backgroundColor, textStyle, etc.
+  ),
               onPressed: () {
                 //    _addComment();
                 
@@ -83,7 +89,12 @@ class _CommentsScreenState extends State<CommentsScreen> {
                 Navigator.pop(context);
                 
               },
-              child: Text('Add'),
+              
+              child: Text('Add',style: TextStyle(
+    color: Colors.white,
+   
+  ),),
+              
             )
           ],
         ),
@@ -118,6 +129,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
                   onPressed: () {
                     opendialog();
                   },
+                
                   icon: Icon(Icons.add)),
             ],
           ],

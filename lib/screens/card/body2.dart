@@ -43,12 +43,14 @@ class Body2 extends StatelessWidget {
       ),
       Container(
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
+       
         // Use a Material design search bar
         child: TextField(
           controller: _searchController,
+          
           decoration: InputDecoration(
            hintText: 'Search...',
-       
+          
             // Add a clear button to the search bar
             suffixIcon: IconButton(
               icon: Icon(Icons.clear),
@@ -62,7 +64,7 @@ class Body2 extends StatelessWidget {
               },
             ),
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20.0),
+              borderRadius: BorderRadius.circular(30.0),
             ),
           ),
         ),
@@ -73,8 +75,28 @@ class Body2 extends StatelessWidget {
       CommentsScreen(),
       SizedBox(height: 20),
       
-      Text(commentValue),
-
+       Container(
+     child: Row(
+      children: [
+         IconButton(
+             iconSize: 50,
+           icon: Image.asset('assets/images/profile image.PNG'),
+            onPressed: () {},
+          ),
+          SizedBox(width: 10,),
+           Text(commentValue),
+           SizedBox(width: 10,),
+            IconButton(
+                  onPressed: () {
+                   
+                  },
+                
+                  icon: Icon(Icons.add))
+      ],
+     ),
+    ),
+     
+     
       
     ]);
   }
